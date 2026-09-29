@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#f5f5f7" />
+<title>Kiara Easy Foods</title>
+<meta name="description" content="Kiara Easy Foods, redesigned with a polished Apple-inspired interaction system." />
+<style>
+:root{
+  color-scheme:light;--bg:#f5f5f7;--surface:rgba(255,255,255,.78);--solid:rgba(255,255,255,.95);
+  --text:#1d1d1f;--muted:#6e6e73;--line:rgba(0,0,0,.08);--line2:rgba(0,0,0,.14);
+  --accent:#0071e3;--soft:rgba(0,113,227,.1);--success:#248a3d;--warning:#bf5b00;
+  --shadow:0 1px 2px rgba(0,0,0,.03),0 14px 38px rgba(0,0,0,.08);--shadow2:0 2px 4px rgba(0,0,0,.04),0 24px 55px rgba(0,0,0,.11)
+}
+html[data-theme=dark]{
+  color-scheme:dark;--bg:#09090b;--surface:rgba(24,24,27,.74);--solid:rgba(28,28,30,.95);
+  --text:#f5f5f7;--muted:#a1a1a6;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.15);
+  --accent:#0a84ff;--soft:rgba(10,132,255,.14);--success:#30d158;--warning:#ff9f0a;
+  --shadow:0 1px 2px rgba(0,0,0,.2),0 16px 42px rgba(0,0,0,.28);--shadow2:0 2px 4px rgba(0,0,0,.25),0 28px 62px rgba(0,0,0,.38)
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}html{scroll-behavior:smooth;background:var(--bg)}
+body{
+  min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  font-optical-sizing:auto;color:var(--text);-webkit-font-smoothing:antialiased;
+  background:radial-gradient(circle at 12% -8%,rgba(90,200,250,.22),transparent 31rem),radial-gradient(circle at 86% 0%,rgba(0,113,227,.14),transparent 30rem),var(--bg)
+}
+button,input,select{font:inherit}button{color:inherit;cursor:pointer}button,input,select,summary{-webkit-tap-highlight-color:transparent}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 34%,transparent);outline-offset:2px}
+.page{width:min(1240px,calc(100% - 32px));margin:0 auto;padding:18px 0 72px}
+.glass{border:1px solid var(--line);background:var(--surface);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);box-shadow:var(--shadow)}
+.press{transform:translateZ(0);transition:transform .17s cubic-bezier(.2,.8,.2,1),background .18s,border-color .18s,box-shadow .18s,color .18s;will-change:transform}.press:hover{transform:translateY(-1px)}.press:active{transform:scale(.965);transition-duration:.08s}
+.topbar{position:sticky;top:12px;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:12px 13px 12px 16px;border-radius:22px}
+.brand{display:flex;align-items:center;gap:11px}.mark{display:grid;width:40px;height:40px;place-items:center;border-radius:13px;color:#fff;font-size:19px;background:linear-gradient(145deg,#0a84ff,#0071e3 62%,#5ac8fa 130%);box-shadow:inset 0 1px rgba(255,255,255,.3),0 9px 24px rgba(0,113,227,.25)}
+.brand strong{display:block;font-size:.94rem;letter-spacing:-.015em}.brand small{display:block;margin-top:1px;color:var(--muted);font-size:.73rem}
+.icon{display:grid;width:42px;height:42px;place-items:center;border:1px solid var(--line);border-radius:14px;background:var(--solid);font-size:1.1rem}
+.hero{padding:62px 4px 28px}.eyebrow{margin:0 0 10px;color:var(--accent);font-size:.88rem;font-weight:700}.hero h1{max-width:900px;margin:0;font-size:clamp(3rem,7vw,5rem);font-weight:760;letter-spacing:-.05em;line-height:.96}.hero>p:last-of-type{max-width:760px;margin:20px 0 0;color:var(--muted);font-size:clamp(1.06rem,2.1vw,1.42rem);letter-spacing:-.02em;line-height:1.38}
+.modes{display:inline-flex;gap:4px;margin-top:26px;padding:5px;border:1px solid var(--line);border-radius:17px;background:var(--surface);backdrop-filter:blur(18px);box-shadow:var(--shadow)}.mode{border:0;border-radius:13px;padding:10px 14px;color:var(--muted);background:transparent;font-size:.88rem;font-weight:650}.mode.on{color:var(--text);background:var(--solid);box-shadow:0 1px 2px rgba(0,0,0,.05),0 4px 12px rgba(0,0,0,.07)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}.stat{min-height:100px;padding:17px 19px;border-radius:21px}.stat span{color:var(--muted);font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.stat strong{display:block;margin-top:6px;font-size:1.92rem;font-weight:760;letter-spacing:-.045em}.stat small{color:var(--muted);font-size:.82rem}
+.grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(340px,.82fr);gap:18px;align-items:start}.left{display:grid;gap:18px}.card,.recipe{border-radius:28px}.card{padding:24px}.heading{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px}.heading.split{justify-content:space-between}.headingMain{display:flex;gap:12px;align-items:flex-start}.index{display:grid;width:31px;height:31px;place-items:center;border-radius:10px;color:var(--accent);background:var(--soft);font-size:.8rem;font-weight:800}.heading h2,.action h2,.empty h2{margin:1px 0 5px;font-size:1.42rem;font-weight:720;letter-spacing:-.032em;line-height:1.1}.heading p,.action p,.empty p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.5}.count{padding:7px 10px;border-radius:999px;color:var(--accent);background:var(--soft);font-size:.76rem;font-weight:700;white-space:nowrap}
+.field{display:grid;gap:8px}.field span{color:var(--muted);font-size:.78rem;font-weight:650}.control,.search input{width:100%;min-height:50px;border:1px solid var(--line2);border-radius:16px;padding:12px 14px;color:var(--text);background:var(--solid);outline:none}.control:focus,.search input:focus{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 11%,transparent)}
+.suggest{display:flex;gap:8px;overflow-x:auto;margin-bottom:12px;padding:1px;scrollbar-width:none}.suggest::-webkit-scrollbar{display:none}.chip{flex:0 0 auto;border:1px solid color-mix(in srgb,var(--accent) 18%,var(--line));border-radius:999px;padding:8px 11px;color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--solid));font-size:.76rem;font-weight:650;white-space:nowrap}.chip.on{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+.search{position:relative;margin:4px 0 13px}.search b{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:400}.search input{height:46px;min-height:0;padding-left:38px}
+.sidegrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;max-height:390px;overflow:auto;padding:1px 3px 2px 1px}.side{display:flex;min-height:48px;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:15px;padding:11px 11px 11px 12px;color:var(--text);background:var(--solid);text-align:left;font-size:.8rem;font-weight:620}.side.on{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 36%,var(--line));background:var(--soft)}.check{opacity:0;transform:scale(.8);font-weight:800;transition:.17s}.side.on .check{opacity:1;transform:scale(1)}
+.prefs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.action{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px;border-radius:28px}.primary{width:100%;min-height:56px;border:0;border-radius:18px;padding:14px 18px;color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 89%,white),var(--accent));box-shadow:0 12px 30px color-mix(in srgb,var(--accent) 24%,transparent);font-weight:730}.action>div+.primary{width:auto;min-width:170px}
+.recipe{position:sticky;top:90px;min-height:420px;padding:24px;box-shadow:var(--shadow2)}.empty{display:grid;min-height:360px;place-items:center;align-content:center;padding:30px 12px;text-align:center}.emptyIcon{display:grid;width:72px;height:72px;place-items:center;margin-bottom:16px;border-radius:22px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 15%,transparent),rgba(90,200,250,.11));font-size:2rem}.empty p{max-width:330px}
+.recipeTitle{margin:0;font-size:clamp(1.82rem,3vw,2.35rem);font-weight:760;letter-spacing:-.045em;line-height:1.02}.recipeSummary{margin:11px 0 0;color:var(--muted);font-size:.9rem;line-height:1.5}.meta{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px}.meta span{border:1px solid var(--line);border-radius:999px;padding:7px 9px;background:var(--solid);color:var(--muted);font-size:.73rem;font-weight:650;text-transform:capitalize}
+.pairing{display:grid;gap:3px;margin-bottom:21px;border:1px solid var(--line);border-radius:16px;padding:12px 13px;background:var(--solid)}.pairing strong{font-size:.8rem}.pairing span{color:var(--muted);font-size:.78rem}.pairing.great strong{color:var(--success)}.pairing.good strong,.pairing.weak strong{color:var(--warning)}
+.section{margin-top:22px}.section h3{margin:0 0 11px;font-size:.94rem}.ingredients,.steps{display:grid;gap:8px}.ingredient{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line);padding:8px 0;font-size:.8rem}.ingredient strong{max-width:48%;color:var(--muted);font-weight:600;text-align:right}.step{display:grid;grid-template-columns:34px 1fr;gap:11px;border:1px solid var(--line);border-radius:17px;padding:12px;background:color-mix(in srgb,var(--solid) 86%,transparent)}.num{display:grid;width:34px;height:34px;place-items:center;border-radius:11px;color:var(--accent);background:var(--soft);font-size:.78rem;font-weight:800}.step p{margin:1px 0 4px;font-size:.82rem;line-height:1.42}.step span{color:var(--muted);font-size:.72rem;line-height:1.45}
+details{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--solid);margin-top:8px}summary{display:flex;justify-content:space-between;gap:16px;padding:12px 13px;cursor:pointer;list-style:none;font-size:.8rem;font-weight:680}summary::-webkit-details-marker{display:none}.detail{border-top:1px solid var(--line);padding:12px 13px;color:var(--muted);font-size:.76rem;line-height:1.48}.detail ol,.detail ul{padding-left:18px}.detail li{margin-bottom:5px}
+.toast{position:fixed;z-index:100;left:50%;bottom:24px;transform:translate(-50%,18px);opacity:0;pointer-events:none;border-radius:14px;padding:10px 14px;color:#fff;background:rgba(28,28,30,.93);backdrop-filter:blur(16px);box-shadow:0 10px 30px rgba(0,0,0,.2);font-size:.78rem;font-weight:650;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:940px){.grid{grid-template-columns:1fr}.recipe{position:static}.hero{padding-top:48px}}
+@media(max-width:700px){.page{width:min(100% - 20px,1240px);padding-top:10px}.topbar{top:8px;border-radius:19px}.brand small{display:none}.hero{padding:39px 3px 22px}.hero h1{font-size:clamp(2.62rem,13.5vw,4rem)}.modes{display:flex;width:100%;margin-top:22px}.mode{flex:1;padding-inline:9px}.stats{gap:8px}.stat{min-height:86px;padding:14px;border-radius:18px}.card,.recipe{padding:18px;border-radius:24px}.grid,.left{gap:12px}.sidegrid{grid-template-columns:repeat(2,minmax(0,1fr));max-height:430px}.prefs{grid-template-columns:1fr 1fr}.action{display:grid;border-radius:24px}.action>div+.primary{width:100%}}
+@media(max-width:430px){.prefs{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important}.press:hover,.press:active{transform:none}}
+@media(prefers-reduced-transparency:reduce){.glass,.modes{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--solid)}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar glass">
+  <div class="brand"><div class="mark">✦</div><div><strong>Kiara Easy Foods</strong><small>No ingredient typing</small></div></div>
+  <button class="icon press" id="theme" aria-label="Toggle theme">☾</button>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">Build dinner in seconds</p>
+  <h1>Pick your meal.<br>We’ll handle the steps.</h1>
+  <p>Choose a protein, add up to three sides, and get a clear cooking plan without typing out ingredients.</p>
+  <div class="modes">
+    <button class="mode press on" data-mode="normal">Normal</button>
+    <button class="mode press" data-mode="disguise">Disguise</button>
+    <button class="mode press" data-mode="auto">Auto Pick</button>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat glass"><span>Proteins</span><strong>27</strong></div>
+  <div class="stat glass"><span>Sides</span><strong>60</strong></div>
+  <div class="stat glass"><span>Selected</span><strong><b id="selectedCount">1</b><small>/3</small></strong></div>
+</section>
+
+<div class="grid">
+<section class="left">
+  <article class="card glass">
+    <div class="heading"><div class="index">1</div><div><h2>Choose your protein</h2><p>Start with the centerpiece of the meal.</p></div></div>
+    <label class="field"><span>Protein</span><select class="control" id="protein"></select></label>
+  </article>
+
+  <article class="card glass">
+    <div class="heading split">
+      <div class="headingMain"><div class="index">2</div><div><h2>Add your sides</h2><p>Choose one to three.</p></div></div>
+      <span class="count" id="countLabel">1 selected</span>
+    </div>
+    <div class="suggest" id="suggest"></div>
+    <label class="search"><b>⌕</b><input id="search" placeholder="Search 60 sides" aria-label="Search sides"></label>
+    <div class="sidegrid" id="sidegrid"></div>
+  </article>
+
+  <article class="card glass">
+    <div class="heading"><div class="index">3</div><div><h2>Fine-tune it</h2><p>Optional preferences shape the cooking plan.</p></div></div>
+    <div class="prefs">
+      <label class="field"><span>Servings</span><input class="control" id="servings" type="number" min="1" max="12" value="2"></label>
+      <label class="field"><span>Skill</span><select class="control" id="skill"><option>beginner</option><option>intermediate</option></select></label>
+      <label class="field"><span>Method</span><select class="control" id="method"><option>stovetop</option><option selected>oven</option><option>air fryer</option><option>grill</option></select></label>
+      <label class="field"><span>Time limit</span><input class="control" id="time" type="number" min="10" max="180" value="35"></label>
+      <label class="field"><span>Flavor</span><select class="control" id="flavor"><option>quick</option><option selected>healthy</option><option>comfort</option><option>spicy</option></select></label>
+    </div>
+  </article>
+
+  <article class="action glass" id="actionCard">
+    <button class="primary press" id="submit">Create cooking plan</button>
+  </article>
+</section>
+
+<aside>
+  <article class="recipe glass" id="recipe">
+    <div class="empty" id="empty">
+      <div class="emptyIcon">🍽</div><h2>Your cooking plan</h2>
+      <p>Choose your foods, then create the plan. Your instructions will appear here.</p>
+    </div>
+    <div id="plan" hidden></div>
+  </article>
+</aside>
+</div>
+<div class="toast" id="toast"></div>
+</main>
+<script>
+const proteins=["Chicken Breast","Chicken Thighs","Chicken Drumsticks","Ground Turkey","Turkey Breast","Chicken Wings","Sirloin Steak","Flank Steak","Ground Beef","Chuck Roast","Beef Strips","Pork Chops","Pork Tenderloin","Ground Pork","Italian Sausage","Salmon","Cod","Tilapia","Shrimp","Scallops","Tuna Steak","Trout","Firm Tofu","Tempeh","Chickpeas","Lentils","Black Beans"];
+const sides=["Steamed Rice","Brown Rice","Garlic Rice","Quinoa","Couscous","Mashed Potatoes","Roasted Potatoes","Sweet Potato Wedges","Baked Potato","Mac and Cheese","Butter Noodles","Wild Rice","Polenta","Cornbread","Rice Pilaf","Roasted Broccoli","Steamed Broccoli","Sauteed Green Beans","Roasted Carrots","Glazed Carrots","Garlic Asparagus","Roasted Brussels Sprouts","Sauteed Spinach","Grilled Zucchini","Roasted Cauliflower","Corn on the Cob","Sauteed Mushrooms","Cabbage Slaw","Roasted Bell Peppers","Green Peas","Braised Kale","Stir-Fried Bok Choy","Roasted Butternut Squash","Honey Glazed Parsnips","Sauteed Cabbage","Garden Salad","Caesar Salad","Greek Salad","Cucumber Tomato Salad","Coleslaw","Potato Salad","Pasta Salad","Avocado Salad","Herbed Yogurt Slaw","Lemon Arugula Salad","Creamed Corn","Baked Beans","Garlic Bread","Dinner Rolls","Cheesy Grits","Scalloped Potatoes","Buttered Biscuits","Loaded Mashed Potatoes","Pickled Onions","Fresh Salsa","Chimichurri","Tzatziki","Pico de Gallo","Lemon Wedges","Hot Honey Drizzle"];
+const suggestions=["Sauteed Green Beans","Green Peas","Steamed Rice","Brown Rice","Garlic Rice"];
+let selected=new Set(["Garlic Asparagus"]),mode="normal";
+const $=id=>document.getElementById(id);
+proteins.forEach(p=>{const o=document.createElement("option");o.value=o.textContent=p;if(p==="Salmon")o.selected=true;$("protein").append(o)});
+function toast(msg){$("toast").textContent=msg;$("toast").classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>$("toast").classList.remove("show"),1800)}
+function updateCount(){$("selectedCount").textContent=selected.size;$("countLabel").textContent=selected.size+" selected"}
+function toggleSide(name){if(selected.has(name))selected.delete(name);else if(selected.size<3)selected.add(name);else return toast("Choose up to 3 sides.");renderSides($("search").value);renderSuggest();updateCount()}
+function renderSuggest(){$("suggest").innerHTML="";suggestions.forEach(name=>{const b=document.createElement("button");b.className="chip press"+(selected.has(name)?" on":"");b.textContent=name;b.onclick=()=>toggleSide(name);$("suggest").append(b)})}
+function renderSides(q=""){$("sidegrid").innerHTML="";q=q.trim().toLowerCase();sides.filter(s=>s.toLowerCase().includes(q)).forEach(name=>{const b=document.createElement("button");b.className="side press"+(selected.has(name)?" on":"");b.innerHTML="<span>"+name+"</span><span class='check'>✓</span>";b.onclick=()=>toggleSide(name);$("sidegrid").append(b)})}
+function setMode(next){mode=next;document.querySelectorAll(".mode").forEach(b=>b.classList.toggle("on",b.dataset.mode===next));if(next==="auto"){$("actionCard").innerHTML='<div><h2>Let Easy Foods choose</h2><p>One tap picks a protein and one to three sides, then builds the plan.</p></div><button class="primary press" id="autoBtn">Pick my meal</button>';$("autoBtn").onclick=randomMeal}else{$("actionCard").innerHTML='<button class="primary press" id="submit">'+(next==="disguise"?"Build disguise plan":"Create cooking plan")+'</button>';$("submit").onclick=makePlan}}
+function randomMeal(){const p=proteins[Math.floor(Math.random()*proteins.length)],n=1+Math.floor(Math.random()*3),sh=[...sides].sort(()=>Math.random()-.5).slice(0,n);$("protein").value=p;selected=new Set(sh);renderSides($("search").value);renderSuggest();updateCount();makePlan()}
+function pairing(protein,ss,flavor){const heavy=["Mac and Cheese","Loaded Mashed Potatoes","Scalloped Potatoes","Creamed Corn"];const hc=ss.filter(s=>heavy.includes(s)).length;const seafood=["Salmon","Cod","Tilapia","Shrimp","Scallops","Tuna Steak","Trout"];if(hc>=2)return{status:"weak",title:"Pairing note",msg:"This combo may feel too heavy and one-note."};if(seafood.includes(protein)&&hc>=1&&ss.length>=2)return{status:"weak",title:"Pairing note",msg:"Seafood usually tastes better with one lighter, brighter side."};if(flavor==="spicy"&&!ss.some(s=>["Cucumber Tomato Salad","Herbed Yogurt Slaw","Tzatziki"].includes(s)))return{status:"good",title:"Good pairing",msg:"Consider one cooling side to balance heat."};return{status:"great",title:"Great pairing",msg:"Strong, balanced pairing."}}
+function disguisePlan(ss,servings){return ss.map(side=>{let method="Mash + season",steps=["Cook until tender.","Mash or pulse briefly to reduce recognizable texture.","Season well and combine with a familiar base."];if(/broccoli|cauliflower|carrots|zucchini|spinach|kale|bok choy|cabbage|peas|green beans/i.test(side)){method="Blend into sauce";steps=["Steam or sauté until very soft.","Blend with 2–4 tbsp broth or milk until smooth.","Fold into sauce, rice, or mashed sides in small additions."]}else if(/salad|slaw|tomato|cucumber|arugula/i.test(side)){method="Finely chop + creamy binder";steps=["Chop very fine.","Mix into yogurt dressing, mayo, or mashed avocado.","Use as filling or topping."]}else if(/rice|quinoa|couscous|pilaf/i.test(side)){method="Flavor masking + texture blend";steps=["Cook with flavorful stock.","Mix in finely grated vegetables while hot.","Finish with butter or olive oil and seasoning."]}return{side,method,amount:Math.max(40,servings*35)+"g total",steps}})}
+function makePlan(){const ss=[...selected];if(!ss.length)return toast("Choose at least 1 side.");const p=$("protein").value,serv=Number($("servings").value)||2,skill=$("skill").value,method=$("method").value,time=Number($("time").value)||35,flavor=$("flavor").value,sideText=ss.join(" + "),pair=pairing(p,ss,flavor);const ingredients=[{i:p,a:serv+" servings worth"},{i:"Olive oil",a:serv+" tbsp"},{i:"Salt",a:(.5*serv).toFixed(1)+" tsp"},{i:"Black pepper",a:(.25*serv).toFixed(1)+" tsp"},...ss.map(s=>({i:s,a:"for "+serv+" servings"}))];const steps=[{t:"Prep "+p+" and preheat for "+method+".",m:6,tip:skill==="beginner"?"Pat protein dry before seasoning for better browning.":"Season early for deeper flavor."},{t:"Cook "+p+" via "+method+" until safely done.",m:12,tip:"Use a thermometer for doneness instead of guesswork."},{t:"Cook sides: "+sideText+".",m:10,tip:"Stagger start times so all components finish together."},{t:"Plate, taste, and adjust salt, acid, or spice before serving.",m:3,tip:"A final squeeze of lemon or splash of vinegar brightens the dish."}];const title=flavor[0].toUpperCase()+flavor.slice(1)+" "+p+" with "+sideText;$("empty").hidden=true;$("plan").hidden=false;$("plan").innerHTML='<p class="eyebrow">Cooking plan</p><h2 class="recipeTitle">'+title+'</h2><p class="recipeSummary">A '+skill+'-friendly '+method+' meal built from your picks.</p><div class="meta"><span>'+method+'</span><span>'+Math.min(31,time)+' min</span><span>'+serv+' servings</span></div><div class="pairing '+pair.status+'"><strong>'+pair.title+'</strong><span>'+pair.msg+'</span></div><section class="section"><h3>Ingredients</h3><div class="ingredients">'+ingredients.map(x=>'<div class="ingredient"><span>'+x.i+'</span><strong>'+x.a+'</strong></div>').join("")+'</div></section><section class="section"><h3>Step-by-step</h3><div class="steps">'+steps.map((x,i)=>'<div class="step"><div class="num">'+(i+1)+'</div><div><p>'+x.t+'</p><span>~'+x.m+' min · '+x.tip+'</span></div></div>').join("")+'</div></section>'+(mode==="disguise"?'<section class="section"><h3>Disguise plan</h3>'+disguisePlan(ss,serv).map(d=>'<details><summary>'+d.side+'<span>'+d.method+'</span></summary><div class="detail"><p><strong>Hidden amount:</strong> '+d.amount+'</p><ol>'+d.steps.map(s=>'<li>'+s+'</li>').join("")+'</ol></div></details>').join("")+'</section>':"")+'<details><summary>Substitutions & common mistakes</summary><div class="detail"><ul><li><strong>Olive oil:</strong> avocado oil</li><li><strong>Overcrowding:</strong> cook in batches for better browning.</li><li><strong>Not tasting:</strong> adjust salt and acid at the end.</li></ul></div></details>';if(innerWidth<941)$("recipe").scrollIntoView({behavior:"smooth",block:"start"})}
+document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>setMode(b.dataset.mode));$("theme").onclick=()=>{const dark=document.documentElement.dataset.theme==="dark";document.documentElement.dataset.theme=dark?"light":"dark";$("theme").textContent=dark?"☾":"☀︎"};$("search").oninput=e=>renderSides(e.target.value);$("submit").onclick=makePlan;renderSides();renderSuggest();updateCount();
+</script>
+</body>
+</html>
